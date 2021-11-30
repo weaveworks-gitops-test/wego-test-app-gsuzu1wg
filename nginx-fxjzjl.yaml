@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-fxjzjl
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-fxjzjl
+  namespace: my-nginx-fxjzjl
+  labels:
+    name: nginx-fxjzjl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-fxjzjl
+  template:
+    metadata:
+      namespace: my-nginx-fxjzjl
+      labels:
+        name: nginx-fxjzjl
+    spec:
+      containers:
+      - name: nginx-fxjzjl
+        image: nginx
+        ports:
+        - containerPort: 80
+
